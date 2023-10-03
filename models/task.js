@@ -1,24 +1,28 @@
 import mongoose from "mongoose";
 const schema = new mongoose.Schema({
-  name: {
+  title: {
     type: String,
     required: true,
   },
-  email: {
+  description: {
     type: String,
     required: true,
-    unique: true,
   },
-  password: {
-    type: String,
+
+  //this is for the checkbox
+  isCompleted: {
+    type: Boolean,
+    default: false,
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
     required: true,
-    select: false,
   },
   createdAt: {
     type: Date,
-    required: true,
     default: Date.now,
   },
 });
 
-export const User = mongoose.model("User", schema);
+export const Task = mongoose.model("Task", schema);

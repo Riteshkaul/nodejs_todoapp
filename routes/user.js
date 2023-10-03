@@ -1,15 +1,13 @@
 import express from "express";
 import { User } from "../models/user.js";
-import { getAllUsers, getUserDetails, register } from "../controllers/user.js";
+import { getMyProfile, login, logout, register } from "../controllers/user.js";
+import { isAuthenticated } from "../middlewares/auth.js";
 const router = express.Router();
 
-router.get("/all", getAllUsers);
+router.post("/new", register);
+router.post("/login", login);
+router.get("/logout", logout);
 
-router.post("/all", register);
-
-// /userid/ritesh ->ritesh is id
-// /user/id/abc -> abc is id  this is dynamic url
-// user/Userid
-router.get("/userid/:id", getUserDetails);
+router.get("/me", isAuthenticated, getMyProfile);
 
 export default router;
