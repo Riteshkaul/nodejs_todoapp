@@ -18,5 +18,8 @@
   "type": "module",
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "engines": {
+    "node": ">=14.20.1"
+  }
 }
